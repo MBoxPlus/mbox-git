@@ -1,0 +1,12 @@
+ALIAS: 
+CLI: true
+DEPENDENCIES:
+- MBoxCore
+LAUNCHER: true
+NAME: MBoxGit
+VERSION: '1.2'
+REQUIRED: true
+USER_VISIBLE: false
+MINIMUM_VERSION: '4.8.0'
+AUTHORS:
+- MBox Team

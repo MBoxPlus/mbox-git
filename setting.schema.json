@@ -1,0 +1,18 @@
+{
+  "id": "git",
+  "title": "Git",
+  "type": "object",
+  "properties": {
+    "multi_language_commit": {
+      "type": "boolean",
+      "title": "Multi-Language Commit",
+      "description": "Enable checking multi-language format of commit message."
+    },
+    "rebase_pull": {
+      "global": true,
+      "type": "boolean",
+      "title": "Rebase Pull",
+      "description": "Rebase instead of merge while pulling."
+    }
+  }
+}

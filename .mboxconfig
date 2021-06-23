@@ -1,0 +1,5 @@
+{
+  "podfile": "Native/Podfile",
+  "podspec": "Native/MBoxGit.podspec",
+  "xcodeproj": "Native/MBoxGit.xcodeproj"
+}
