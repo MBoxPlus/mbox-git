@@ -35,9 +35,13 @@ public extension GitHelper {
 
     func remoteBranch(named name: String) -> Branch? {
         return UI.log(verbose: "Find remote branch `\(name)`:", resultOutput: { $0?.longName ?? "(none)" }) {
-            return (try? repo.remoteBranches().get().first {
-                $0.shortName == name || $0.name == name || $0.longName == name
-            }) ?? nil
+            guard let remotes = try? self.remotes() else { return nil }
+            for remote in remotes {
+                if let branch = self.branch(named: "\(remote)/\(name)") {
+                    return branch
+                }
+            }
+            return nil
         }
     }
 
@@ -129,6 +133,12 @@ public extension GitHelper {
                     }
                 }
             }
+        }
+    }
+
+    func createBranch(_ name: String) throws {
+        try UI.log(verbose: "Create the branch \(name):") {
+            try repo.createBranch(name).get()
         }
     }
 

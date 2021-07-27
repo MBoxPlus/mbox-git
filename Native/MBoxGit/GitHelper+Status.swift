@@ -173,7 +173,8 @@ extension GitHelper {
     }
 
     public func pointer(for gitPointer: GitPointer, local: Bool = true, remote: Bool = true) -> GitPointer? {
-        if !gitPointer.isBranch || local {
+        let fetchLocal = !gitPointer.isBranch || local
+        if fetchLocal {
             let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 ? "exists" : "does not exist")."}) {
                 return repo.object(from: gitPointer.value).isSuccess
             }
@@ -188,6 +189,13 @@ extension GitHelper {
                 }
                 if exist { return remotePointer }
             }
+        }
+
+        if (!fetchLocal) {
+            let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 ? "exists" : "does not exist")."}) {
+                return repo.object(from: gitPointer.value).isSuccess
+            }
+            if exist { return gitPointer }
         }
         return nil
     }
