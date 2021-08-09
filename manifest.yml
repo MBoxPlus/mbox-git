@@ -1,7 +1,7 @@
 ALIAS: 
 CLI: true
-DEPENDENCIES:
-- MBoxCore
+FORWARD_DEPENDENCIES:
+  MBoxCore: null
 LAUNCHER: true
 NAME: MBoxGit
 VERSION: '1.2'

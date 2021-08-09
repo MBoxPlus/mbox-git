@@ -137,7 +137,7 @@ public extension GitHelper {
     }
 
     func createBranch(_ name: String) throws {
-        try UI.log(verbose: "Create the branch \(name):") {
+        try UI.log(verbose: "Create the branch `\(name)`") {
             try repo.createBranch(name).get()
         }
     }

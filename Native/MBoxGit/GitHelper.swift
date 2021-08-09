@@ -27,7 +27,7 @@ open class GitHelper: NSObject {
         guard self.path.isExists, let remotes = try? self.repo.allRemotes().get() else {
             return nil
         }
-        return remotes.compactMap{ $0.URL }.first
+        return remotes.compactMap{ $0.originURL }.first
     }()
 
     public convenience init(repo: Repository) {
@@ -83,7 +83,10 @@ open class GitHelper: NSObject {
     }
 
     public func reset(hard: Bool = false) throws {
-        try repo.reset(type: hard ? .mixed : .hard).get()
+        try repo.reset(type: hard ? .hard : .mixed).get()
+        if hard {
+            try repo.checkout(CheckoutOptions(strategy: .RemoveUntracked)).get()
+        }
     }
 
     public static func create(path: String, initCommit: Bool = true) throws -> Repository {

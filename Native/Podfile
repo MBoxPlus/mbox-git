@@ -4,7 +4,3 @@ use_frameworks!
 target 'MBoxGit' do
   podspec
 end
-
-target 'MBoxGitTests' do
-  pod 'Nimble'
-end

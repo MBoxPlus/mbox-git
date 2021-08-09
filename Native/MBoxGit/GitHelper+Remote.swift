@@ -149,12 +149,16 @@ extension GitHelper {
                 }
                 UI.log(verbose: "Check default branch exists") {
                     let info = execGit(["symbolic-ref", "refs/remotes/origin/HEAD"])
-                    guard info.status else { return }
-                    let defaultBranch = info.cmd.outputString
-                    if execGit(["show-branch", defaultBranch]).status {
-                        UI.log(verbose: "The default branch is `\(defaultBranch)`")
+                    if info.status {
+                        let defaultBranch = info.cmd.outputString
+                        if execGit(["show-branch", defaultBranch]).status {
+                            UI.log(verbose: "The default branch is `\(defaultBranch)`")
+                        } else {
+                            UI.log(verbose: "The default branch is missing (\(defaultBranch)).")
+                            execGit(["remote", "set-head", "origin", "-a"])
+                        }
                     } else {
-                        UI.log(verbose: "The default branch is missing (\(defaultBranch)).")
+                        UI.log(verbose: "The default branch is missing.")
                         execGit(["remote", "set-head", "origin", "-a"])
                     }
                 }

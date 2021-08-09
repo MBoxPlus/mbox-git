@@ -14,6 +14,25 @@ extension GitHelper {
         return repo.isWorkTree
     }
 
+    public func listWorkTrees() throws -> [String] {
+        try UI.log(verbose: "List all worktrees") {
+            return try repo.worktrees().get()
+        }
+    }
+
+    public func workTreePath(by name: String) throws -> String {
+        return try UI.log(verbose: "Get worktree by `\(name)`", resultOutput: { $0 }) {
+            return try repo.worktreePath(by: name).get()
+        }
+    }
+
+    public func HEAD(for worktree: String) throws -> GitPointer {
+        return try UI.log(verbose: "Get worktree reference `\(worktree)`", resultOutput: { $0.description }) {
+            let head = try repo.HEAD(for: worktree).get()
+            return GitPointer(head)
+        }
+    }
+
     @discardableResult
     public func pruneWorkTree(_ name: String, force: Bool = false) throws -> String? {
         return try UI.log(verbose: "Prune worktree `\(name)`") {
@@ -40,13 +59,13 @@ extension GitHelper {
         }
     }
 
-    public func addWorkTree(name: String, path: String, head: String? = nil) throws {
+    public func addWorkTree(name: String, path: String, head: String? = nil, checkout: Bool = true) throws {
         var message = "Add worktree `\(name)` at `\(path)`"
         if let head = head {
             message.append(" (based \(head))")
         }
         try UI.log(verbose: message) {
-            try repo.addWorkTree(name: name, path: path, head: head).get()
+            try repo.addWorkTree(name: name, path: path, head: head, checkout: checkout).get()
         }
     }
 }
