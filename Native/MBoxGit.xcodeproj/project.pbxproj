@@ -176,7 +176,6 @@
 				ABFE669B22A6834D0059AE60 /* Sources */,
 				ABFE669C22A6834D0059AE60 /* Frameworks */,
 				C9FFA91B7066B904AC096F96 /* [CP] Embed Pods Frameworks */,
-
 			);
 			buildRules = (
 			);
