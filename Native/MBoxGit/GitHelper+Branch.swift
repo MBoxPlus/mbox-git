@@ -45,6 +45,12 @@ public extension GitHelper {
         }
     }
 
+    func localBranch(named name: String) -> Branch? {
+        return UI.log(verbose: "Find local branch `\(name)`:", resultOutput: { $0?.longName ?? "(none)" }) {
+            return try? repo.localBranch(named: name).get()
+        }
+    }
+
     func branch(named name: String) -> Branch? {
         return UI.log(verbose: "Find branch `\(name)`:", resultOutput: { $0?.longName ?? "(none)" }) {
             return try? repo.branch(named: name).get()
@@ -136,9 +142,21 @@ public extension GitHelper {
         }
     }
 
-    func createBranch(_ name: String) throws {
-        try UI.log(verbose: "Create the branch `\(name)`") {
-            try repo.createBranch(name).get()
+    func createBranch(_ name: String, base: GitPointer? = nil) throws {
+        try UI.log(verbose: "Create the branch `\(name)` (base \(base?.description ?? "HEAD")") {
+            if let base = base {
+                if base.isBranch {
+                    _ = try repo.createBranch(name, baseBranch: base.value).get()
+                } else if base.isTag {
+                    _ = try repo.createBranch(name, baseTag: base.value).get()
+                } else if base.isCommit {
+                    _ = try repo.createBranch(name, baseCommit: base.value).get()
+                } else {
+                    throw RuntimeError("No support base \(base)")
+                }
+            } else {
+                _ = try repo.createBranch(name).get()
+            }
         }
     }
 
