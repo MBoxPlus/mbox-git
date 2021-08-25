@@ -20,6 +20,15 @@ open class GitCMD: MBCMD {
         if showColor {
             self.bin.append(" -c color.ui=always")
         }
+        if !self.pager {
+            self.bin.append(" --no-pager")
+        }
+    }
+
+    open var pager = true {
+        didSet {
+            setupBin()
+        }
     }
 
     open var showColor = true {

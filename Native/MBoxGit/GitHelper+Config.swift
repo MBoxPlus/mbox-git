@@ -35,14 +35,24 @@ extension GitHelper {
         try self.repo.config.string(for: key).get()
     }
 
-    public static func getConfig(for path: String) throws -> String? {
+    public static func getConfig(for key: String) throws -> String? {
         let config = try Config.default().get()
-        return try config.string(for: path).get()
+        return try config.string(for: key).get()
+    }
+
+    public static func getConfig(for key: String, path: String) throws -> String? {
+        let config = try Config.open(path: path).get()
+        return try config.string(for: key).get()
     }
 
     public static func setConfig(key: String, value: String, path: String) throws {
         let config = try Config.open(path: path).get()
         try config.set(string: value, for: key).get()
+    }
+
+    public static func removeConfig(key: String, path: String) throws {
+        let config = try Config.open(path: path).get()
+        try config.delete(keyPath: key).get()
     }
 
     // MARK: - Convience
