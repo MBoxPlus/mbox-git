@@ -2,7 +2,7 @@
 //  GitHelper+Tag.swift
 //  MBoxGit
 //
-//  Created by 詹迟晶 on 2019/11/17.
+//  Created by Whirlwind on 2019/11/17.
 //  Copyright © 2019 com.bytedance. All rights reserved.
 //
 

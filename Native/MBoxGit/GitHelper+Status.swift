@@ -95,7 +95,7 @@ extension GitHelper {
                             if let tagRef = reference as? TagReference {
                                 return .tag(tagRef.name)
                             }
-                            // lightweight 类型的 Tag 需要单独循环比较
+                            // lightweight Tag
                             if let tag = try? repo.allTags().get().first(where: { $0.oid == reference.oid }) {
                                 return .tag(tag.name)
                             }

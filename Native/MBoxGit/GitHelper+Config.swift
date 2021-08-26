@@ -2,7 +2,7 @@
 //  GitHelper+Config.swift
 //  MBoxGit
 //
-//  Created by 詹迟晶 on 2019/11/28.
+//  Created by Whirlwind on 2019/11/28.
 //  Copyright © 2019 com.bytedance. All rights reserved.
 //
 

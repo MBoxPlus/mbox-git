@@ -92,7 +92,7 @@ public extension GitHelper {
                 return
             }
             if create && targetPointer.isBranch {
-                // 创建新分支
+                // Create a new branch
                 if let basePointer = basePointer, basePointer != targetPointer {
                     try UI.log(verbose: "Create the new \(targetPointer) based on \(basePointer)") {
                         switch basePointer {

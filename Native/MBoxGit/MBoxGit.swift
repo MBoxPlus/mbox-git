@@ -2,7 +2,7 @@
 //  MBoxGit.swift
 //  MBoxGit
 //
-//  Created by 詹迟晶 on 2020/6/22.
+//  Created by Whirlwind on 2020/6/22.
 //  Copyright © 2020 com.bytedance. All rights reserved.
 //
 
