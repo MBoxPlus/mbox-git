@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
     spec.dependency name
   end
 
-  spec.dependency "SwiftGit2-MBox", "~> 1.5.0"
+  spec.dependency "SwiftGit2-MBox", "~> 1.5.1"
   spec.user_target_xcconfig = {
     "FRAMEWORK_SEARCH_PATHS" => "\"$(DSTROOT)/MBoxGit/MBoxGit.framework/Versions/A/Frameworks\""
   }
