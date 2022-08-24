@@ -116,7 +116,7 @@ extension GitHelper {
         if let error = error {
             throw error
         }
-        _ = self.status
+        _ = self.status()
         return stashMsg
     }
 

@@ -54,6 +54,26 @@ extension GitHelper {
         }
     }
 
+    public func isForwad(_ branch: String? = nil) throws -> Bool {
+        guard let branch = branch ?? self.currentBranch else {
+            throw RuntimeError("Git is not in branch, could not check the merge status.")
+        }
+        guard let trackBranch = self.trackBranch(branch, autoMatch: true) else {
+            throw RuntimeError("Could not get the track branch.")
+        }
+        return try self.checkMergeStatus(curBranch: branch, target: .branch(trackBranch)) == .forward
+    }
+
+    public func isBehind(_ branch: String? = nil) throws -> Bool {
+        guard let branch = branch ?? self.currentBranch else {
+            throw RuntimeError("Git is not in branch, could not check the merge status.")
+        }
+        guard let trackBranch = self.trackBranch(branch, autoMatch: true) else {
+            throw RuntimeError("Could not get the track branch.")
+        }
+        return try self.checkMergeStatus(curBranch: branch, target: .branch(trackBranch)) == .behind
+    }
+
     public func merge(with gitPointer: GitPointer) throws {
         try UI.log(verbose: "Merge with \(gitPointer)") {
             let oid: OID
@@ -66,14 +86,13 @@ extension GitHelper {
                 let reference = try repo.reference(named: gitPointer.value).get()
                 oid = reference.oid
             }
-            let way = try repo.merge(with: oid, message: "Merge \(gitPointer) into \(self.currentBranch!)").get()
-            switch (way) {
-            case .normal:
-                UI.log(verbose: "Do a normal merge.")
-            case .fastForward:
-                UI.log(verbose: "Do a fast forward merge.")
-            default:
-                UI.log(verbose: "There is nothing to merge.")
+            UI.log(verbose: "Merge From OID: \(oid.description)")
+            if GitHelper.useLibgit2 {
+                _ = try repo.merge(with: oid, message: "Merge \(gitPointer) into \(self.currentBranch!)").get()
+            } else {
+                self.unlock()
+                let cmd = GitCMD(workingDirectory: self.path)
+                try cmd.exec(["merge", oid.description])
             }
         }
     }

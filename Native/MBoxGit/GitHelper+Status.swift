@@ -172,30 +172,60 @@ extension GitHelper {
                       block: { return (try? repo.hasConflicts().get()) ?? false })
     }
 
+    public func pointer(for name: String) -> GitPointer? {
+        if let ref = repo.reference(named: name).value {
+            if let ref = ref as? Branch {
+                return .branch(ref.name)
+            } else if let ref = ref as? TagReference {
+                return .tag(ref.name)
+            }
+        } else if let obj = repo.object(from: name).value {
+            if let ref = obj as? Commit {
+                return .commit(ref.oid.description)
+            } else if let ref = obj as? Tag {
+                return .tag(ref.name)
+            }
+        }
+        return nil
+    }
+
+    public func pointer(from gitPointer: GitPointer) -> GitPointer? {
+        if let v = self.pointer(for: gitPointer.value) {
+            if gitPointer.isUnknown {
+                return v.clone(gitPointer.value)
+            } else if v.type == gitPointer.type {
+                return gitPointer
+            } else {
+                UI.log(verbose: "Found a \(v), but it is not a \(gitPointer.type).")
+            }
+        }
+        return nil
+    }
+
     public func pointer(for gitPointer: GitPointer, local: Bool = true, remote: Bool = true) -> GitPointer? {
         let fetchLocal = !gitPointer.isBranch || local
         if fetchLocal {
-            let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 ? "exists" : "does not exist")."}) {
-                return repo.object(from: gitPointer.value).isSuccess
+            let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 != nil ? "exists" : "does not exist")."}) {
+                return self.pointer(from: gitPointer)
             }
-            if exist { return gitPointer }
+            if let exist = exist { return exist }
         }
 
         if remote, gitPointer.isBranch, let remotes = try? remotes(), !remotes.isEmpty {
             for remote in remotes {
                 let remotePointer = gitPointer.clone("\(remote)/\(gitPointer.value)")
-                let exist = UI.log(verbose: "Check \(remotePointer) exists", resultOutput: { "The \(remotePointer) \($0 ? "exists" : "does not exist")."}) {
-                    return repo.object(from: remotePointer.value).isSuccess
+                let exist = UI.log(verbose: "Check \(remotePointer) exists", resultOutput: { "The \(remotePointer) \($0 != nil ? "exists" : "does not exist")."}) {
+                    return self.pointer(from: remotePointer)
                 }
-                if exist { return remotePointer }
+                if let exist = exist { return exist }
             }
         }
 
         if (!fetchLocal) {
-            let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 ? "exists" : "does not exist")."}) {
-                return repo.object(from: gitPointer.value).isSuccess
+            let exist = UI.log(verbose: "Check \(gitPointer) exists", resultOutput: { "The \(gitPointer) \($0 != nil ? "exists" : "does not exist")."}) {
+                return self.pointer(from: gitPointer)
             }
-            if exist { return gitPointer }
+            if let exist = exist { return exist }
         }
         return nil
     }

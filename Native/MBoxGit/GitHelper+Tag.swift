@@ -13,7 +13,7 @@ import SwiftGit2
 extension GitHelper {
     public func tags() throws -> [String: String] {
         let tags = try self.repo.allTags().get().map { ($0.name, $0.oid.description) }
-        return Dictionary(uniqueKeysWithValues: tags)
+        return Dictionary(tags)
     }
 
     public func maxVersionTag() -> (name: String, oid: String)? {

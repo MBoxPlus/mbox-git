@@ -13,29 +13,40 @@ open class GitCMD: MBCMD {
     public required init(useTTY: Bool? = nil) {
         super.init(useTTY: useTTY)
         self.setupBin()
+        self.setupArgs()
     }
 
-    func setupBin() {
+    dynamic
+    open func setupBin() {
         self.bin = "git"
+    }
+
+    open func setupArgs() {
         if showColor {
-            self.bin.append(" -c color.ui=always")
+            self.args.append(contentsOf: ["-c", "color.ui=always"])
         }
         if !self.pager {
-            self.bin.append(" --no-pager")
+            self.args.append("--no-pager")
         }
     }
 
     open var pager = true {
         didSet {
-            setupBin()
+            setupArgs()
         }
     }
 
     open var showColor = true {
         didSet {
-            setupBin()
+            setupArgs()
         }
     }
-    
+
+    open func exec(_ args: [String]) throws {
+        let code: Int32 = self.exec(args.map(\.quoted).joined(separator: " "))
+        if code != 0 {
+            throw RuntimeError("git \(args.first!) failed!", code: code)
+        }
+    }
 }
 

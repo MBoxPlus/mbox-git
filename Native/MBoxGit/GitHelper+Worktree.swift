@@ -34,14 +34,29 @@ extension GitHelper {
     }
 
     @discardableResult
-    public func pruneWorkTree(_ name: String, force: Bool = false) throws -> String? {
+    public func removeWorkTree(_ name: String, path: String, force: Bool = false) throws -> String? {
         return try UI.log(verbose: "Prune worktree `\(name)`") {
-            if let path = try repo.pruneWorkTree(name, force: force).get() {
-                UI.log(verbose: path)
-                return path
+            if Self.useLibgit2 {
+                if let path = try repo.pruneWorkTree(name, force: force).get() {
+                    UI.log(verbose: path)
+                    return path
+                } else {
+                    UI.log(verbose: "There is nothing to prune.")
+                    return nil
+                }
             } else {
-                UI.log(verbose: "There is nothing to prune.")
-                return nil
+                var args = ["worktree", "remove"]
+                if force {
+                    args << "--force"
+                }
+                args << path
+                do {
+                    try execGit(args)
+                    return path
+                } catch {
+                    UI.log(verbose: "There is nothing to prune.")
+                    return nil
+                }
             }
         }
     }
@@ -65,7 +80,21 @@ extension GitHelper {
             message.append(" (based \(head))")
         }
         try UI.log(verbose: message) {
-            try repo.addWorkTree(name: name, path: path, head: head, checkout: checkout).get()
+            if GitHelper.useLibgit2 {
+                try repo.addWorkTree(name: name, path: path, head: head, checkout: checkout).get()
+            } else {
+                var args = ["worktree", "add"]
+                if !checkout {
+                    args << "--no-checkout"
+                }
+                args << path
+                if let head = head {
+                    args << head
+                } else {
+                    args << "--detach"
+                }
+                try self.execGit(args)
+            }
         }
     }
 }

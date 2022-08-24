@@ -57,12 +57,12 @@ extension GitHelper {
 
     // MARK: - Convience
     public var authorName: String? {
-        let key = "author.name"
+        let key = "user.name"
         return try? self.getConfig(key: key) ?? Self.getConfig(for: key)
     }
 
     public var authorEmail: String? {
-        let key = "author.email"
+        let key = "user.email"
         return try? self.getConfig(key: key) ?? Self.getConfig(for: key)
     }
 }

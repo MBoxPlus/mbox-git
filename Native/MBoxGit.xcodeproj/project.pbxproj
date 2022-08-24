@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		20F92B112646ED4C73F584AE /* Pods_MBoxGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1F8E5C2964DEF8F0359E8F /* Pods_MBoxGit.framework */; };
+		279263C02811966F005AE605 /* Repository+Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279263BF2811966F005AE605 /* Repository+Reset.swift */; };
+		AB018B2F28990DE8000A54A5 /* GitHelper+Alternates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */; };
 		AB06915924A0AF5F00277191 /* MBoxGit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB06915824A0AF5F00277191 /* MBoxGit.swift */; };
 		AB0FF4CC22CB572D0011C0B8 /* GitHelper+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */; };
 		AB0FF4CE22CB57740011C0B8 /* GitPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */; };
@@ -16,11 +18,15 @@
 		AB0FF4D622CB5CEA0011C0B8 /* GitHelper+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */; };
 		AB0FF4D822CB5D2B0011C0B8 /* GitHelper+Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */; };
 		AB0FF4DA22CB6A1F0011C0B8 /* GitHelper+Worktree.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */; };
+		AB324A6E27718FA800548530 /* GitHelper+Ignore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */; };
 		AB6294102302C36C00F95DB8 /* GitHelper+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */; };
 		AB64A17D22B106F800FD06FC /* GitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64A17C22B106F800FD06FC /* GitHelper.swift */; };
 		AB9A5EBA23817ECF000A24BA /* GitHelper+Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */; };
+		AB9AAD90283B468D003C549D /* partial_clone_to_full_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */; };
+		AB9AAE90283CE3D0003C549D /* get_git_server_version.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */; };
 		AB9C91C4242F016200BD2C88 /* GitCMD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9C91C3242F016200BD2C88 /* GitCMD.swift */; };
 		ABAA0A11238FAA880020917C /* GitHelper+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA0A10238FAA880020917C /* GitHelper+Config.swift */; };
+		ABBA71A127D9B1C000CA0EB4 /* MBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */; };
 		ABBB04742485FD410003BCB5 /* GitHelper+Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */; };
 		ABD98348238F6E8000A0F64A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD98347238F6E8000A0F64A /* User.swift */; };
 		ABFE66B022A6834D0059AE60 /* MBoxGit.h in Headers */ = {isa = PBXBuildFile; fileRef = ABFE66A222A6834D0059AE60 /* MBoxGit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		279263BF2811966F005AE605 /* Repository+Reset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Repository+Reset.swift"; sourceTree = "<group>"; };
+		AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Alternates.swift"; sourceTree = "<group>"; };
 		AB06915824A0AF5F00277191 /* MBoxGit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBoxGit.swift; sourceTree = "<group>"; };
 		AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Status.swift"; sourceTree = "<group>"; };
 		AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPointer.swift; sourceTree = "<group>"; };
@@ -37,13 +45,17 @@
 		AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Merge.swift"; sourceTree = "<group>"; };
 		AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Branch.swift"; sourceTree = "<group>"; };
 		AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Worktree.swift"; sourceTree = "<group>"; };
+		AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Ignore.swift"; sourceTree = "<group>"; };
 		AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Clean.swift"; sourceTree = "<group>"; };
 		AB64A17C22B106F800FD06FC /* GitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHelper.swift; sourceTree = "<group>"; };
 		AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Tag.swift"; sourceTree = "<group>"; };
+		AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = partial_clone_to_full_clone.sh; sourceTree = "<group>"; };
+		AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = get_git_server_version.sh; sourceTree = "<group>"; };
 		AB9C91C3242F016200BD2C88 /* GitCMD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCMD.swift; sourceTree = "<group>"; };
 		ABA08CD8238D88D700C5567A /* manifest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = manifest.yml; path = ../manifest.yml; sourceTree = "<group>"; };
 		ABA08CED238D8B7D00C5567A /* Basic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Basic.xcconfig; sourceTree = "<group>"; };
 		ABAA0A10238FAA880020917C /* GitHelper+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Config.swift"; sourceTree = "<group>"; };
+		ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSetting.swift; sourceTree = "<group>"; };
 		ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Graph.swift"; sourceTree = "<group>"; };
 		ABD98347238F6E8000A0F64A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABFE669F22A6834D0059AE60 /* MBoxGit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBoxGit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,18 +149,24 @@
 				ABFE66A222A6834D0059AE60 /* MBoxGit.h */,
 				AB06915824A0AF5F00277191 /* MBoxGit.swift */,
 				ABFE66A322A6834D0059AE60 /* Info.plist */,
+				279263BF2811966F005AE605 /* Repository+Reset.swift */,
 				AB64A17C22B106F800FD06FC /* GitHelper.swift */,
 				ABAA0A10238FAA880020917C /* GitHelper+Config.swift */,
+				AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */,
 				AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */,
 				AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */,
 				AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */,
 				AB0FF4D322CB58560011C0B8 /* GitHelper+Stash.swift */,
 				AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */,
 				AB0FF4CF22CB57B40011C0B8 /* GitHelper+Remote.swift */,
+				AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */,
+				AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */,
 				AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */,
 				AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */,
 				ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */,
+				AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */,
 				AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */,
+				ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */,
 			);
 			path = MBoxGit;
 			sourceTree = "<group>";
@@ -176,6 +194,7 @@
 				ABFE669B22A6834D0059AE60 /* Sources */,
 				ABFE669C22A6834D0059AE60 /* Frameworks */,
 				C9FFA91B7066B904AC096F96 /* [CP] Embed Pods Frameworks */,
+				AB9AAD8F283B4689003C549D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -193,7 +212,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = com.bytedance;
 				TargetAttributes = {
 					ABFE669E22A6834D0059AE60 = {
@@ -203,7 +222,7 @@
 				};
 			};
 			buildConfigurationList = ABFE669922A6834D0059AE60 /* Build configuration list for PBXProject "MBoxGit" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -219,6 +238,18 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB9AAD8F283B4689003C549D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9AAE90283CE3D0003C549D /* get_git_server_version.sh in Resources */,
+				AB9AAD90283B468D003C549D /* partial_clone_to_full_clone.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1DB7A8449178C93AF532FF83 /* [CP] Check Pods Manifest.lock */ = {
@@ -268,15 +299,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0FF4D822CB5D2B0011C0B8 /* GitHelper+Branch.swift in Sources */,
+				279263C02811966F005AE605 /* Repository+Reset.swift in Sources */,
 				AB0FF4D022CB57B40011C0B8 /* GitHelper+Remote.swift in Sources */,
+				AB018B2F28990DE8000A54A5 /* GitHelper+Alternates.swift in Sources */,
 				AB0FF4D422CB58560011C0B8 /* GitHelper+Stash.swift in Sources */,
 				AB0FF4CE22CB57740011C0B8 /* GitPointer.swift in Sources */,
+				AB324A6E27718FA800548530 /* GitHelper+Ignore.swift in Sources */,
 				AB0FF4CC22CB572D0011C0B8 /* GitHelper+Status.swift in Sources */,
 				AB0FF4DA22CB6A1F0011C0B8 /* GitHelper+Worktree.swift in Sources */,
 				AB06915924A0AF5F00277191 /* MBoxGit.swift in Sources */,
 				AB64A17D22B106F800FD06FC /* GitHelper.swift in Sources */,
 				AB0FF4D622CB5CEA0011C0B8 /* GitHelper+Merge.swift in Sources */,
 				AB9C91C4242F016200BD2C88 /* GitCMD.swift in Sources */,
+				ABBA71A127D9B1C000CA0EB4 /* MBSetting.swift in Sources */,
 				AB6294102302C36C00F95DB8 /* GitHelper+Clean.swift in Sources */,
 				ABBB04742485FD410003BCB5 /* GitHelper+Graph.swift in Sources */,
 				AB9A5EBA23817ECF000A24BA /* GitHelper+Tag.swift in Sources */,
@@ -324,6 +359,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_CURRENT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -390,6 +426,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_CURRENT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -422,6 +459,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -456,6 +494,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;

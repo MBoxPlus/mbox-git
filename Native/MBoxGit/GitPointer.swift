@@ -80,14 +80,14 @@ public enum GitPointer: CustomStringConvertible, Equatable {
         return "\(type) `\(value)`"
     }
 
-    public static func ==(lhs: GitPointer, rhs:GitPointer) -> Bool {
+    public static func ==(lhs: GitPointer, rhs: GitPointer) -> Bool {
         switch (lhs,rhs) {
         case (.branch(let lBranch), .branch(let rBranch)):
             return lBranch == rBranch
         case (.tag(let lTag), .tag(let rTag)):
             return lTag == rTag
         case (.commit(let lCommit), .commit(let rCommit)):
-            return lCommit == rCommit
+            return lCommit == rCommit || lCommit.starts(with: rCommit) || rCommit.starts(with: lCommit)
         case (.unknown(let lvalue), _):
             return lvalue == rhs.value
         default:

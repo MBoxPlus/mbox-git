@@ -11,22 +11,36 @@ import MBoxCore
 import SwiftGit2
 
 @objc(MBoxGit)
-open class MBoxGit: NSObject, MBPluginProtocol {
-    public static let sshConfigPath = "~/.mbox/ssh.config"
+open class MBoxGit: NSObject, MBPluginMigrateProtocol {
+    public static let sshConfigPath = MBSetting.globalDir.appending(pathComponent: "ssh.config")
 
     func generateSSHConfig() {
-        let path = MBoxGit.sshConfigPath.expandingTildeInPath
+        var content: [String]
+        var changed = false
+        let path = MBoxGit.sshConfigPath
         if !path.isExists {
-            UI.log(verbose: "Generate `\(MBoxGit.sshConfigPath)`") {
-                try? FileManager.default.createDirectory(atPath: path.deletingLastPathComponent, withIntermediateDirectories: true, attributes: nil)
-                let content = """
+            try? FileManager.default.createDirectory(atPath: path.deletingLastPathComponent, withIntermediateDirectories: true, attributes: nil)
+            content = ["""
                 Host *
                     GSSAPIAuthentication yes
                     GSSAPIDelegateCredentials no
 
-                """
-                try? content.write(toFile: path, atomically: true, encoding: .utf8)
-            }
+                """]
+            changed = true
+        } else {
+            content = try! String(contentsOfFile: path, encoding: .utf8).lines()
+        }
+        let hostKeyChecking = content.contains(where: { $0.trimmed.lowercased().hasPrefix("stricthostkeychecking")
+        })
+        if !hostKeyChecking {
+            content.append("")
+            content.append("StrictHostKeyChecking accept-new")
+            content.append("")
+            changed = true
+        }
+        if !changed { return }
+        UI.log(verbose: "Update `\(path)`") {
+            try? content.joined(separator: "\n").write(toFile: path, atomically: true, encoding: .utf8)
         }
     }
 
@@ -48,5 +62,8 @@ open class MBoxGit: NSObject, MBPluginProtocol {
     public func installPlugin(from version: String?) throws {
         generateSSHConfig()
         includeSSHConfig()
+    }
+
+    public func uninstallPlugin() {
     }
 }

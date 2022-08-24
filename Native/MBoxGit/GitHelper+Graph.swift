@@ -31,7 +31,7 @@ extension GitHelper {
         return try self.repo.aheadBehind(local: b1, upstream: b2).get()
     }
 
-    open func calculateLatestCommit(commits: [String]) throws -> String? {
+    public func calculateLatestCommit(commits: [String]) throws -> String? {
         if commits.count == 0 {
             return nil
         }
