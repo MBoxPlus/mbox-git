@@ -263,7 +263,7 @@ extension GitHelper {
         }
     }
 
-    public func pull() throws {
+    public func pull(tags: Bool = true, prune: Bool = true) throws {
         try UI.log(info: "Pull from remote") {
             guard let remoteBranch = self.trackBranch() else {
                 throw RuntimeError("No tracked branch to pull.")
@@ -275,10 +275,17 @@ extension GitHelper {
                 guard let url = self.url else {
                     throw RuntimeError("The git url is none.")
                 }
-                let opt = FetchOptions(url: url, tags: true, prune: true, messageBlock: type(of: self).fetchVerbMessageCallback)
+                let opt = FetchOptions(url: url, tags: tags, prune: prune, messageBlock: type(of: self).fetchVerbMessageCallback)
                 try repo.pull(remote: remote, branch: branch, options: opt).get()
             } else {
-                try execGit(["pull", remote, branch, "--force", "--progress"], showOutput: false)
+                var args = ["pull", remote, branch, "--force", "--progress"]
+                if tags {
+                    args << "--tags"
+                }
+                if prune {
+                    args << "--prune"
+                }
+                try execGit(args, showOutput: false)
             }
         }
     }

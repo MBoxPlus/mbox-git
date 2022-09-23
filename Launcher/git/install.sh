@@ -8,6 +8,7 @@ check_git_installed
 if [[ $? != 0 ]]; then
     mbox_print_title Installing git
     mbox_exe brew install git
+    mbox_exe brew link --override git
     hash -r
 
     check_git_installed

@@ -1,14 +1,16 @@
-CLI: true
-FORWARD_DEPENDENCIES:
-  MBoxCore: null
-LAUNCHER: true
-NAME: MBoxGit
-VERSION: '1.2'
-REQUIRED: true
-USER_VISIBLE: false
-MINIMUM_VERSION: '4.8.0'
 AUTHORS:
 - MBox Team
+CLI: true
+DEPENDENCIES:
+- MBoxCore
+- MBoxSSH
+LAUNCHER: true
 LAUNCHERS:
 - MBoxGit/git
 - MBoxGit/git-lfs
+MINIMUM_VERSION: 4.8.0
+MODULES: []
+NAME: MBoxGit
+REQUIRED: true
+USER_VISIBLE: false
+VERSION: '1.2'
