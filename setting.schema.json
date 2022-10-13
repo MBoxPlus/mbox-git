@@ -13,6 +13,20 @@
       "type": "boolean",
       "title": "Rebase Pull",
       "description": "Rebase instead of merge while pulling."
+    },
+    "partial_clone": {
+      "global": true,
+      "type": "boolean",
+      "default": true,
+      "title": "Partial Clone",
+      "description": "Partial clone repository with 'blob:none` filter."
+    },
+    "full_clone": {
+      "global": true,
+      "type": "boolean",
+      "default": true,
+      "title": "Full Clone",
+      "description": "Full clone repository in the background."
     }
   }
 }

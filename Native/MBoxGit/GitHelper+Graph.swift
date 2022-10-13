@@ -2,7 +2,7 @@
 //  GitHelper+Graph.swift
 //  MBoxGit
 //
-//  Created by 詹迟晶 on 2020/6/2.
+//  Created by Whirlwind on 2020/6/2.
 //  Copyright © 2020 com.bytedance. All rights reserved.
 //
 
@@ -31,7 +31,7 @@ extension GitHelper {
         return try self.repo.aheadBehind(local: b1, upstream: b2).get()
     }
 
-    open func calculateLatestCommit(commits: [String]) throws -> String? {
+    public func calculateLatestCommit(commits: [String]) throws -> String? {
         if commits.count == 0 {
             return nil
         }

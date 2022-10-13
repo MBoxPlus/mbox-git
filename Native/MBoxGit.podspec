@@ -13,20 +13,23 @@ Pod::Spec.new do |spec|
     Include git function and libgit2.
                    DESC
 
-  spec.homepage     = "https://github.com/MBoxSpace/#{name2}"
+  spec.homepage     = "https://github.com/MBoxPlus/#{name2}"
   spec.license      = "MIT"
   spec.author       = { `git config user.name`.strip => `git config user.email`.strip }
-  spec.source       = { :git => "git@github.com:MBoxSpace/#{name2}.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "git@github.com:MBoxPlus/#{name2}.git", :tag => "#{spec.version}" }
 
   spec.source_files = "#{name}/*.{h,m,swift}", "#{name}/**/*.{h,m,swift}"
 
   spec.frameworks = "CoreFoundation", "Security"
 
-  yaml['DEPENDENCIES'].each do |name|
+  yaml['DEPENDENCIES']&.each do |name|
+    spec.dependency name
+  end
+  yaml['FORWARD_DEPENDENCIES']&.each do |name, _|
     spec.dependency name
   end
 
-  spec.dependency "SwiftGit2-MBox", "~> 1.3.1"
+  spec.dependency "SwiftGit2-MBox", "~> 1.8.0"
   spec.user_target_xcconfig = {
     "FRAMEWORK_SEARCH_PATHS" => "\"$(DSTROOT)/MBoxGit/MBoxGit.framework/Versions/A/Frameworks\""
   }

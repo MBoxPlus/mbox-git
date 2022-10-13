@@ -1,8 +1,14 @@
 
-git-lfs:
-  required: true
+git:
   platforms:
     - iOS
     - Android
   dependencies:
+    - MBoxCore/Homebrew
+git-lfs:
+  platforms:
+    - iOS
+    - Android
+  dependencies:
+    - MBoxGit/git
     - MBoxCore/Homebrew

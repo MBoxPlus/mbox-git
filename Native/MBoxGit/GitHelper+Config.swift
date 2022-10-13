@@ -2,7 +2,7 @@
 //  GitHelper+Config.swift
 //  MBoxGit
 //
-//  Created by 詹迟晶 on 2019/11/28.
+//  Created by Whirlwind on 2019/11/28.
 //  Copyright © 2019 com.bytedance. All rights reserved.
 //
 
@@ -35,9 +35,14 @@ extension GitHelper {
         try self.repo.config.string(for: key).get()
     }
 
-    public static func getConfig(for path: String) throws -> String? {
+    public static func getConfig(for key: String) throws -> String? {
         let config = try Config.default().get()
-        return try config.string(for: path).get()
+        return try config.string(for: key).get()
+    }
+
+    public static func getConfig(for key: String, path: String) throws -> String? {
+        let config = try Config.open(path: path).get()
+        return try config.string(for: key).get()
     }
 
     public static func setConfig(key: String, value: String, path: String) throws {
@@ -45,14 +50,19 @@ extension GitHelper {
         try config.set(string: value, for: key).get()
     }
 
+    public static func removeConfig(key: String, path: String) throws {
+        let config = try Config.open(path: path).get()
+        try config.delete(keyPath: key).get()
+    }
+
     // MARK: - Convience
     public var authorName: String? {
-        let key = "author.name"
+        let key = "user.name"
         return try? self.getConfig(key: key) ?? Self.getConfig(for: key)
     }
 
     public var authorEmail: String? {
-        let key = "author.email"
+        let key = "user.email"
         return try? self.getConfig(key: key) ?? Self.getConfig(for: key)
     }
 }

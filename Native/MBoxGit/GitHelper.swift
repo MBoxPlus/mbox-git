@@ -23,11 +23,18 @@ open class GitHelper: NSObject {
         return self.repo.commonDir!.path
     }
 
+    private lazy var allRemotes: [Remote] = (try? self.repo.allRemotes().get()) ?? []
+
     open lazy var url: String? = {
-        guard self.path.isExists, let remotes = try? self.repo.allRemotes().get() else {
+        guard self.path.isExists else {
             return nil
         }
-        return remotes.compactMap{ $0.URL }.first
+        var remotes = self.allRemotes
+        if remotes.count > 1 {
+            let remoteName = self.trackBranch()?.split(separator: "/").first ?? "origin"
+            remotes.bringToFirst(where: { $0.name == remoteName })
+        }
+        return remotes.compactMap{ $0.originURL }.first
     }()
 
     public convenience init(repo: Repository) {
@@ -52,6 +59,15 @@ open class GitHelper: NSObject {
     }
 
     internal var repo: Repository!
+
+    @discardableResult
+    internal func execGit(_ args: [String], workingDirectory: String? = nil, showOutput: Bool = false, quite: Bool = false) throws -> GitCMD {
+        let cmd = GitCMD(workingDirectory: workingDirectory ?? self.path)
+        cmd.showOutput = showOutput
+        cmd.quite = quite
+        try cmd.exec(args)
+        return cmd
+    }
 
     class var fetchInfoMessageCallback: RemoteCallback.MessageBlock {
         return { message in
@@ -81,9 +97,29 @@ open class GitHelper: NSObject {
             return
         }
     }
-
+    
+    public func reset(commit: String) throws {
+        if GitHelper.useLibgit2 {
+            try repo.reset(commit: commit).get()
+        } else {
+            let args = ["reset", "--mixed", commit]
+            try self.execGit(args, quite: true)
+        }
+    }
+    
     public func reset(hard: Bool = false) throws {
-        try repo.reset(type: hard ? .mixed : .hard).get()
+        if GitHelper.useLibgit2 {
+            try repo.reset(type: hard ? .hard : .mixed).get()
+        } else {
+            var args = ["reset"]
+            if hard {
+                args << "--hard"
+            }
+            try self.execGit(args, quite: true)
+        }
+        if hard {
+            try repo.checkout(CheckoutOptions(strategy: .RemoveUntracked)).get()
+        }
     }
 
     public static func create(path: String, initCommit: Bool = true) throws -> Repository {
@@ -133,5 +169,16 @@ open class GitHelper: NSObject {
         } else {
             throw RuntimeError("Query GitLab API error: unknown!")
         }
+    }
+
+    var filelock: NSDistributedLock?
+
+    public func lock() {
+        self.filelock = NSDistributedLock(path: self.gitDir.appending(pathComponent: "index.lock"))
+        self.filelock?.try()
+    }
+
+    public func unlock() {
+        self.filelock?.unlock()
     }
 }

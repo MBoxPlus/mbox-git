@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		20F92B112646ED4C73F584AE /* Pods_MBoxGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1F8E5C2964DEF8F0359E8F /* Pods_MBoxGit.framework */; };
+		279263C02811966F005AE605 /* Repository+Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279263BF2811966F005AE605 /* Repository+Reset.swift */; };
+		AB018B2F28990DE8000A54A5 /* GitHelper+Alternates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */; };
 		AB06915924A0AF5F00277191 /* MBoxGit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB06915824A0AF5F00277191 /* MBoxGit.swift */; };
 		AB0FF4CC22CB572D0011C0B8 /* GitHelper+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */; };
 		AB0FF4CE22CB57740011C0B8 /* GitPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */; };
@@ -16,35 +18,25 @@
 		AB0FF4D622CB5CEA0011C0B8 /* GitHelper+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */; };
 		AB0FF4D822CB5D2B0011C0B8 /* GitHelper+Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */; };
 		AB0FF4DA22CB6A1F0011C0B8 /* GitHelper+Worktree.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */; };
+		AB324A6E27718FA800548530 /* GitHelper+Ignore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */; };
 		AB6294102302C36C00F95DB8 /* GitHelper+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */; };
 		AB64A17D22B106F800FD06FC /* GitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64A17C22B106F800FD06FC /* GitHelper.swift */; };
 		AB9A5EBA23817ECF000A24BA /* GitHelper+Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */; };
+		AB9AAD90283B468D003C549D /* partial_clone_to_full_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */; };
+		AB9AAE90283CE3D0003C549D /* get_git_server_version.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */; };
 		AB9C91C4242F016200BD2C88 /* GitCMD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9C91C3242F016200BD2C88 /* GitCMD.swift */; };
 		ABAA0A11238FAA880020917C /* GitHelper+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAA0A10238FAA880020917C /* GitHelper+Config.swift */; };
+		ABBA71A127D9B1C000CA0EB4 /* MBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */; };
 		ABBB04742485FD410003BCB5 /* GitHelper+Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */; };
 		ABD98348238F6E8000A0F64A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD98347238F6E8000A0F64A /* User.swift */; };
-		ABFE66A922A6834D0059AE60 /* MBoxGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE669F22A6834D0059AE60 /* MBoxGit.framework */; };
-		ABFE66AE22A6834D0059AE60 /* MBoxGitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE66AD22A6834D0059AE60 /* MBoxGitTests.swift */; };
 		ABFE66B022A6834D0059AE60 /* MBoxGit.h in Headers */ = {isa = PBXBuildFile; fileRef = ABFE66A222A6834D0059AE60 /* MBoxGit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABFE66DC22A6AC970059AE60 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE66DB22A6AC970059AE60 /* CoreFoundation.framework */; };
 		ABFE66DE22A6AC9D0059AE60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE66DD22A6AC9D0059AE60 /* Security.framework */; };
-		C3513C897A9B7A9EFFD022BA /* Pods_MBoxGitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865B6CC8D3D2B9A8CDABEB52 /* Pods_MBoxGitTests.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		ABFE66AA22A6834D0059AE60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABFE669622A6834D0059AE60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ABFE669E22A6834D0059AE60;
-			remoteInfo = MBoxGit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0966B5501CC966F3DA051FD9 /* Pods-MBoxGitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBoxGitTests.release.xcconfig"; path = "Target Support Files/Pods-MBoxGitTests/Pods-MBoxGitTests.release.xcconfig"; sourceTree = "<group>"; };
-		865B6CC8D3D2B9A8CDABEB52 /* Pods_MBoxGitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBoxGitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9797232445703D2A0C0EB065 /* Pods-MBoxGitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBoxGitTests.debug.xcconfig"; path = "Target Support Files/Pods-MBoxGitTests/Pods-MBoxGitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		279263BF2811966F005AE605 /* Repository+Reset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Repository+Reset.swift"; sourceTree = "<group>"; };
+		AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Alternates.swift"; sourceTree = "<group>"; };
 		AB06915824A0AF5F00277191 /* MBoxGit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBoxGit.swift; sourceTree = "<group>"; };
 		AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Status.swift"; sourceTree = "<group>"; };
 		AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPointer.swift; sourceTree = "<group>"; };
@@ -53,21 +45,22 @@
 		AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Merge.swift"; sourceTree = "<group>"; };
 		AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Branch.swift"; sourceTree = "<group>"; };
 		AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Worktree.swift"; sourceTree = "<group>"; };
+		AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Ignore.swift"; sourceTree = "<group>"; };
 		AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Clean.swift"; sourceTree = "<group>"; };
 		AB64A17C22B106F800FD06FC /* GitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHelper.swift; sourceTree = "<group>"; };
 		AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Tag.swift"; sourceTree = "<group>"; };
+		AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = partial_clone_to_full_clone.sh; sourceTree = "<group>"; };
+		AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = get_git_server_version.sh; sourceTree = "<group>"; };
 		AB9C91C3242F016200BD2C88 /* GitCMD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCMD.swift; sourceTree = "<group>"; };
 		ABA08CD8238D88D700C5567A /* manifest.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = manifest.yml; path = ../manifest.yml; sourceTree = "<group>"; };
 		ABA08CED238D8B7D00C5567A /* Basic.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Basic.xcconfig; sourceTree = "<group>"; };
 		ABAA0A10238FAA880020917C /* GitHelper+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Config.swift"; sourceTree = "<group>"; };
+		ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSetting.swift; sourceTree = "<group>"; };
 		ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GitHelper+Graph.swift"; sourceTree = "<group>"; };
 		ABD98347238F6E8000A0F64A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABFE669F22A6834D0059AE60 /* MBoxGit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBoxGit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFE66A222A6834D0059AE60 /* MBoxGit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBoxGit.h; sourceTree = "<group>"; };
 		ABFE66A322A6834D0059AE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABFE66A822A6834D0059AE60 /* MBoxGitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBoxGitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABFE66AD22A6834D0059AE60 /* MBoxGitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBoxGitTests.swift; sourceTree = "<group>"; };
-		ABFE66AF22A6834D0059AE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABFE66D622A6AC010059AE60 /* MBoxGit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; indentWidth = 2; path = MBoxGit.podspec; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		ABFE66D722A6AC010059AE60 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; indentWidth = 2; path = Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ABFE66DB22A6AC970059AE60 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -88,15 +81,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABFE66A522A6834D0059AE60 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ABFE66A922A6834D0059AE60 /* MBoxGit.framework in Frameworks */,
-				C3513C897A9B7A9EFFD022BA /* Pods_MBoxGitTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,7 +90,6 @@
 				ABFE66DD22A6AC9D0059AE60 /* Security.framework */,
 				ABFE66DB22A6AC970059AE60 /* CoreFoundation.framework */,
 				ED1F8E5C2964DEF8F0359E8F /* Pods_MBoxGit.framework */,
-				865B6CC8D3D2B9A8CDABEB52 /* Pods_MBoxGitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,8 +101,6 @@
 				ABFE66D622A6AC010059AE60 /* MBoxGit.podspec */,
 				BB1BADC26825CCC9A26A38DC /* Pods-MBoxGit.debug.xcconfig */,
 				BC0A588BE44EFE0415B183B1 /* Pods-MBoxGit.release.xcconfig */,
-				9797232445703D2A0C0EB065 /* Pods-MBoxGitTests.debug.xcconfig */,
-				0966B5501CC966F3DA051FD9 /* Pods-MBoxGitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -146,7 +127,6 @@
 				ABA08CED238D8B7D00C5567A /* Basic.xcconfig */,
 				ABA08CD8238D88D700C5567A /* manifest.yml */,
 				ABFE66A122A6834D0059AE60 /* MBoxGit */,
-				ABFE66AC22A6834D0059AE60 /* MBoxGitTests */,
 				ABFE66A022A6834D0059AE60 /* Products */,
 				AAEFC1242CD2332B3E2BD09D /* Pods */,
 				16316174BDA19B8FEFBA7EDA /* Frameworks */,
@@ -157,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				ABFE669F22A6834D0059AE60 /* MBoxGit.framework */,
-				ABFE66A822A6834D0059AE60 /* MBoxGitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,29 +149,26 @@
 				ABFE66A222A6834D0059AE60 /* MBoxGit.h */,
 				AB06915824A0AF5F00277191 /* MBoxGit.swift */,
 				ABFE66A322A6834D0059AE60 /* Info.plist */,
+				279263BF2811966F005AE605 /* Repository+Reset.swift */,
 				AB64A17C22B106F800FD06FC /* GitHelper.swift */,
 				ABAA0A10238FAA880020917C /* GitHelper+Config.swift */,
+				AB018B2E28990DE8000A54A5 /* GitHelper+Alternates.swift */,
 				AB62940F2302C36C00F95DB8 /* GitHelper+Clean.swift */,
 				AB0FF4D922CB6A1F0011C0B8 /* GitHelper+Worktree.swift */,
 				AB0FF4D722CB5D2B0011C0B8 /* GitHelper+Branch.swift */,
 				AB0FF4D322CB58560011C0B8 /* GitHelper+Stash.swift */,
 				AB0FF4CB22CB572D0011C0B8 /* GitHelper+Status.swift */,
 				AB0FF4CF22CB57B40011C0B8 /* GitHelper+Remote.swift */,
+				AB9AAE8F283CE3CF003C549D /* get_git_server_version.sh */,
+				AB9AAD8E283B4355003C549D /* partial_clone_to_full_clone.sh */,
 				AB0FF4D522CB5CEA0011C0B8 /* GitHelper+Merge.swift */,
 				AB9A5EB923817ECF000A24BA /* GitHelper+Tag.swift */,
 				ABBB04732485FD410003BCB5 /* GitHelper+Graph.swift */,
+				AB324A6D27718FA800548530 /* GitHelper+Ignore.swift */,
 				AB0FF4CD22CB57740011C0B8 /* GitPointer.swift */,
+				ABBA71A027D9B1C000CA0EB4 /* MBSetting.swift */,
 			);
 			path = MBoxGit;
-			sourceTree = "<group>";
-		};
-		ABFE66AC22A6834D0059AE60 /* MBoxGitTests */ = {
-			isa = PBXGroup;
-			children = (
-				ABFE66AD22A6834D0059AE60 /* MBoxGitTests.swift */,
-				ABFE66AF22A6834D0059AE60 /* Info.plist */,
-			);
-			path = MBoxGitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +194,7 @@
 				ABFE669B22A6834D0059AE60 /* Sources */,
 				ABFE669C22A6834D0059AE60 /* Frameworks */,
 				C9FFA91B7066B904AC096F96 /* [CP] Embed Pods Frameworks */,
-				AB6293BD23001BCF00F95DB8 /* Package Dylibs */,
+				AB9AAD8F283B4689003C549D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -229,26 +205,6 @@
 			productReference = ABFE669F22A6834D0059AE60 /* MBoxGit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		ABFE66A722A6834D0059AE60 /* MBoxGitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ABFE66B622A6834D0059AE60 /* Build configuration list for PBXNativeTarget "MBoxGitTests" */;
-			buildPhases = (
-				45EA5BC4D38EB09EA750F299 /* [CP] Check Pods Manifest.lock */,
-				ABFE66A422A6834D0059AE60 /* Sources */,
-				ABFE66A522A6834D0059AE60 /* Frameworks */,
-				ABFE66A622A6834D0059AE60 /* Resources */,
-				68DF6482C3D129D55864D43D /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ABFE66AB22A6834D0059AE60 /* PBXTargetDependency */,
-			);
-			name = MBoxGitTests;
-			productName = MBoxGitTests;
-			productReference = ABFE66A822A6834D0059AE60 /* MBoxGitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -256,20 +212,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = com.bytedance;
 				TargetAttributes = {
 					ABFE669E22A6834D0059AE60 = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1020;
 					};
-					ABFE66A722A6834D0059AE60 = {
-						CreatedOnToolsVersion = 11.0;
-					};
 				};
 			};
 			buildConfigurationList = ABFE669922A6834D0059AE60 /* Build configuration list for PBXProject "MBoxGit" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -282,16 +235,17 @@
 			projectRoot = "";
 			targets = (
 				ABFE669E22A6834D0059AE60 /* MBoxGit */,
-				ABFE66A722A6834D0059AE60 /* MBoxGitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ABFE66A622A6834D0059AE60 /* Resources */ = {
+		AB9AAD8F283B4689003C549D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9AAE90283CE3D0003C549D /* get_git_server_version.sh in Resources */,
+				AB9AAD90283B468D003C549D /* partial_clone_to_full_clone.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,66 +274,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		45EA5BC4D38EB09EA750F299 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MBoxGitTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		68DF6482C3D129D55864D43D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MBoxGitTests/Pods-MBoxGitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MBoxGitTests/Pods-MBoxGitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MBoxGitTests/Pods-MBoxGitTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB6293BD23001BCF00F95DB8 /* Package Dylibs */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-				"$(PODS_ROOT)/MBoxCore/repackage-dylibs.input.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "Package Dylibs";
-			outputFileListPaths = (
-				"$(PODS_ROOT)/MBoxCore/repackage-dylibs.output.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh -li";
-			shellScript = "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8\nruby \"${PODS_ROOT}/MBoxCore/repackage-dylibs.rb\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C9FFA91B7066B904AC096F96 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,15 +299,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0FF4D822CB5D2B0011C0B8 /* GitHelper+Branch.swift in Sources */,
+				279263C02811966F005AE605 /* Repository+Reset.swift in Sources */,
 				AB0FF4D022CB57B40011C0B8 /* GitHelper+Remote.swift in Sources */,
+				AB018B2F28990DE8000A54A5 /* GitHelper+Alternates.swift in Sources */,
 				AB0FF4D422CB58560011C0B8 /* GitHelper+Stash.swift in Sources */,
 				AB0FF4CE22CB57740011C0B8 /* GitPointer.swift in Sources */,
+				AB324A6E27718FA800548530 /* GitHelper+Ignore.swift in Sources */,
 				AB0FF4CC22CB572D0011C0B8 /* GitHelper+Status.swift in Sources */,
 				AB0FF4DA22CB6A1F0011C0B8 /* GitHelper+Worktree.swift in Sources */,
 				AB06915924A0AF5F00277191 /* MBoxGit.swift in Sources */,
 				AB64A17D22B106F800FD06FC /* GitHelper.swift in Sources */,
 				AB0FF4D622CB5CEA0011C0B8 /* GitHelper+Merge.swift in Sources */,
 				AB9C91C4242F016200BD2C88 /* GitCMD.swift in Sources */,
+				ABBA71A127D9B1C000CA0EB4 /* MBSetting.swift in Sources */,
 				AB6294102302C36C00F95DB8 /* GitHelper+Clean.swift in Sources */,
 				ABBB04742485FD410003BCB5 /* GitHelper+Graph.swift in Sources */,
 				AB9A5EBA23817ECF000A24BA /* GitHelper+Tag.swift in Sources */,
@@ -422,23 +320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABFE66A422A6834D0059AE60 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ABFE66AE22A6834D0059AE60 /* MBoxGitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		ABFE66AB22A6834D0059AE60 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ABFE669E22A6834D0059AE60 /* MBoxGit */;
-			targetProxy = ABFE66AA22A6834D0059AE60 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		ABFE66B122A6834D0059AE60 /* Debug */ = {
@@ -477,6 +359,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_CURRENT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -543,6 +426,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_CURRENT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -575,6 +459,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -609,6 +494,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -633,44 +519,6 @@
 			};
 			name = Release;
 		};
-		ABFE66B722A6834D0059AE60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9797232445703D2A0C0EB065 /* Pods-MBoxGitTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MBoxGitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.MBoxGitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		ABFE66B822A6834D0059AE60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0966B5501CC966F3DA051FD9 /* Pods-MBoxGitTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MBoxGitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.MBoxGitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -688,15 +536,6 @@
 			buildConfigurations = (
 				ABFE66B422A6834D0059AE60 /* Debug */,
 				ABFE66B522A6834D0059AE60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ABFE66B622A6834D0059AE60 /* Build configuration list for PBXNativeTarget "MBoxGitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ABFE66B722A6834D0059AE60 /* Debug */,
-				ABFE66B822A6834D0059AE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

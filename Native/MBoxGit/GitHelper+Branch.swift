@@ -28,16 +28,26 @@ public extension GitHelper {
     }
 
     var remoteBranches: [String] {
-        return UI.log(verbose: "List remote branches:", resultOutput: { $0.joined(separator: "\n") }) {
+        return UI.log(verbose: "List remote branches:", resultOutput: { "Found \($0.count) branch\($0.count > 1 ? "es" : "")" }) {
             return (try? repo.remoteBranches().get().map { $0.name }) ?? []
         }
     }
 
     func remoteBranch(named name: String) -> Branch? {
         return UI.log(verbose: "Find remote branch `\(name)`:", resultOutput: { $0?.longName ?? "(none)" }) {
-            return (try? repo.remoteBranches().get().first {
-                $0.shortName == name || $0.name == name || $0.longName == name
-            }) ?? nil
+            guard let remotes = try? self.remotes() else { return nil }
+            for remote in remotes {
+                if let branch = self.branch(named: "\(remote)/\(name)") {
+                    return branch
+                }
+            }
+            return nil
+        }
+    }
+
+    func localBranch(named name: String) -> Branch? {
+        return UI.log(verbose: "Find local branch `\(name)`:", resultOutput: { $0?.longName ?? "(none)" }) {
+            return try? repo.localBranch(named: name).get()
         }
     }
 
@@ -74,7 +84,8 @@ public extension GitHelper {
 
     func checkout(_ targetPointer: GitPointer,
                   basePointer: GitPointer? = nil,
-                  create: Bool = false) throws {
+                  create: Bool = false,
+                  force: Bool = false) throws {
         try UI.log(verbose: "Checkout the \(create ? "new " : "")\(targetPointer):") {
             let curPointer = try currentDescribe()
             if targetPointer == curPointer {
@@ -82,7 +93,7 @@ public extension GitHelper {
                 return
             }
             if create && targetPointer.isBranch {
-                // 创建新分支
+                // Create a new branch
                 if let basePointer = basePointer, basePointer != targetPointer {
                     try UI.log(verbose: "Create the new \(targetPointer) based on \(basePointer)") {
                         switch basePointer {
@@ -104,7 +115,7 @@ public extension GitHelper {
                     }
                 }
             }
-            try UI.log(verbose: "Checkout to \(targetPointer) from \(curPointer)") {
+            try UI.log(verbose: "Checkout to \(targetPointer) from \(curPointer)\(force ? " (Force)" : "")") {
                 if GitHelper.useLibgit2 {
                     if targetPointer.isCommit {
                         try repo.checkout(OID(string: targetPointer.value)!, CheckoutOptions(strategy: .Force)).get()
@@ -121,13 +132,30 @@ public extension GitHelper {
                     if try self.repo.headIsUnborn().get() {
                         args << "-b"
                     }
-                    args << targetPointer.value.quoted
-                    let cmd = GitCMD()
-                    cmd.workingDirectory = self.path
-                    if !cmd.exec(args.joined(separator: " ")) {
-                        throw RuntimeError("Git checkout \(targetPointer) failed.")
+                    if force {
+                        args << "-f"
                     }
+                    args << targetPointer.value
+                    try self.execGit(args)
                 }
+            }
+        }
+    }
+
+    func createBranch(_ name: String, base: GitPointer? = nil) throws {
+        try UI.log(verbose: "Create the branch `\(name)` (base \(base?.description ?? "HEAD"))") {
+            if let base = base {
+                if base.isBranch {
+                    _ = try repo.createBranch(name, baseBranch: base.value).get()
+                } else if base.isTag {
+                    _ = try repo.createBranch(name, baseTag: base.value).get()
+                } else if base.isCommit {
+                    _ = try repo.createBranch(name, baseCommit: base.value).get()
+                } else {
+                    throw RuntimeError("No support base \(base)")
+                }
+            } else {
+                _ = try repo.createBranch(name).get()
             }
         }
     }
